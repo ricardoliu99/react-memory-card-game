@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from "react";
+import GameInfo from "./components/GameInfo";
+import MainGrid from "./components/MainGrid";
 import './App.css';
 
-function App() {
+const App = () => {
+  const [bestScore, setBestScore] = useState(0);
+  const [score, setScore] = useState(0);
+  const [chosenList, setChosenList] = useState([]);
+
+  useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  }, [score, bestScore]);
+
+  const incrementScore = () => {
+    setScore(score + 1);
+  };
+
+  const validateScore = (image) => {
+    console.log(image)
+    if (
+      !chosenList.some(listImage => {
+        return listImage.name === image.name;
+      })
+    ) {
+      setChosenList([...chosenList, image]);
+      incrementScore();
+    } else {
+      setChosenList([]);
+      resetScore();
+    }
+  };
+
+  const resetScore = () => {
+    setScore(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="main-background">
+      <GameInfo score={score} bestScore={bestScore} />
+      <MainGrid validateScore={validateScore}/>
     </div>
   );
-}
+};
 
 export default App;

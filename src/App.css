@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
+#game-details {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 32px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#score {
+   margin-left: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#card-title {
+    padding: 0px;
+    width: 90%;
+    text-align: center;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+#card-title::-webkit-scrollbar {
+    width: 0;
+    }
+
+#card-item {
+    height: 75%;
+    width: 90%;
+    border-radius: 15%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#card {
+    height: 324px;
+    width: 194px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 217, 0, 0.637); 
+    border-radius: 15%;
+    box-shadow: 1px 1px 10px 2px rgba(255, 217, 0, 0.637);
+    flex: 1 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+#main-background {
+    padding: 8px 16px;
+    background-color: rgba(7, 7, 163, 0.808);
+    min-height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }
